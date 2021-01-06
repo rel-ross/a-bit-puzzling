@@ -34,7 +34,9 @@ class CLI
     def available_puzzles
         puts "The following puzzles are available:"
         prompt()
-        prompt.select("Would you like to select any of the puzzles below?", Puzzle.where(in_progress: false).pluck("title"))
+        @selected_puzzle_title = prompt.select("Would you like to select any of the puzzles below?", Puzzle.where(in_progress: false).pluck("title"))
+        borrow_puzzle()
+        binding.pry
     end
 
     def puzzles_in_possession
@@ -43,5 +45,12 @@ class CLI
         #find User whose :name is == to @user_input_name
        puzzles = User.where(name: @user_input_name).pluck("puzzle_id")
         tp Puzzle.where(id: puzzles), :title, :in_progress
+    end
+
+    def borrow_puzzle
+        #when puzzle is selected, in progress becomes true, and puzzle 'goes' to possession of person
+       selected_puzzle = Puzzle.where(title: @selected_puzzle_title) 
+       # selected_puzzle.in_progress = true
+        #User.create(name:@user_input_name, puzzle_id:@selected_puzzle.object_id)
     end
 end
