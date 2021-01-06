@@ -1,8 +1,5 @@
 require_relative 'config/environment'
-
-binding.pry
-
-Cli.new.start_game
+CLI.new.start_puzzle_app
 
 
 
