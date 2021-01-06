@@ -4,7 +4,7 @@ class CreatePuzzlesTable < ActiveRecord::Migration[6.0]
       t.string :title
       t.string :design
       t.integer :number_of_pieces
-      t.boolean :makes_back_sore
+      t.boolean :in_progress
     end
   end
 end

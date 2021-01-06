@@ -10,19 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_05_224636) do
+ActiveRecord::Schema.define(version: 2021_01_06_001931) do
 
   create_table "puzzles", force: :cascade do |t|
     t.string "title"
     t.string "design"
     t.integer "number_of_pieces"
-    t.boolean "makes_back_sore"
+    t.boolean "in_progress"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.integer "puzzle_id"
-    t.boolean "puzzle_complete"
     t.index ["puzzle_id"], name: "index_users_on_puzzle_id"
   end
 
