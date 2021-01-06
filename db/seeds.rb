@@ -7,6 +7,7 @@ bavaria = Puzzle.create(title: "Bavaria", design: "photo of Lichtenstein Castle"
 critical_role = Puzzle.create(title: "Critical Role Vox Macina", design: "illustration of characters from Critical Role", number_of_pieces: 1000, in_progress: true)
 
 User.create(name: "Benton", puzzle_id: london.id)
+User.create(name: "Benton", puzzle_id: critical_role.id)
 User.create(name: "Arielle", puzzle_id: colorado.id)
 User.create(name: "Kyle", puzzle_id: bavaria.id)
 

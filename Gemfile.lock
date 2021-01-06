@@ -38,6 +38,7 @@ GEM
       activerecord (>= 3.2)
       sinatra (>= 1.0)
     sqlite3 (1.4.1)
+    table_print (1.5.7)
     thread_safe (0.3.6)
     tilt (2.0.10)
     tty-color (0.6.0)
@@ -67,6 +68,7 @@ DEPENDENCIES
   require_all (~> 3.0)
   sinatra-activerecord (~> 2.0)
   sqlite3 (~> 1.4)
+  table_print
   tty-prompt
 
 BUNDLED WITH
