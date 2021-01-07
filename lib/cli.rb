@@ -62,24 +62,28 @@ class CLI
         end
         borrow_puzzle()
         available_puzzles()
+        #This isn't working
+        return_to_menu()
     end
 
     def puzzles_in_possession
         clear()
         puts "These are the puzzles in your possession."
-        #find User whose :name is == to @user_input_name
         user_puzzles = User.where(name: @user_input_name)
         puzzles_id = user_puzzles.pluck("puzzle_id")
         tp Puzzle.where(id: puzzles_id), :title, :in_progress
-       
-       
         puzzles_in_progress = Puzzle.where(id: puzzles_id, in_progress: true).pluck("title") 
         if puzzles_in_progress.length > 0
         @mark_as_complete_selection = prompt.select("Want to mark any of these puzzles complete? It will make the puzzle avilable for others to borrow", puzzles_in_progress) 
+        completed_puzzle()    
         else
             puts "No puzzles in progress"
         end
-        completed_puzzle()
+        return_to_menu()
+    end
+
+    def completed_puzzle
+        Puzzle.where(title: @mark_as_complete_selection).update(in_progress: false)
     end
 
     def borrow_puzzle
@@ -91,10 +95,6 @@ class CLI
        old_puzzle_users = User.where(puzzle_id: existing_puzzle_id) 
        old_puzzle_users.destroy_all
        User.create(name:@user_input_name, puzzle_id:selected_puzzle.object_id)
-    end
-
-    def completed_puzzle
-        Puzzle.where(title: @marked_as_complete).update(in_progress: false)
     end
 
     def return_to_menu
