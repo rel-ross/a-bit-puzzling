@@ -54,6 +54,7 @@ GEM
       tty-cursor (~> 0.7)
     tty-color (0.6.0)
     tty-cursor (0.7.1)
+    tty-font (0.5.0)
     tty-prompt (0.23.0)
       pastel (~> 0.8)
       tty-reader (~> 0.8)
@@ -85,6 +86,7 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
   table_print
   tty-box
+  tty-font
   tty-prompt
 
 BUNDLED WITH
