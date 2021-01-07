@@ -3,11 +3,33 @@ class CLI
     def clear
         system("clear")
     end
+
     def start_puzzle_app
+        clear()
         splash_page()
     end
+
+    def prompt
+        prompt = TTY::Prompt.new(active_color: :cyan, symbols: {marker: '🧩'})
+    end
+
+    def logo
+        puts "
+        _      ____  _ _     ____                _          _ 
+       / \    | __ )(_) |_  |  _ \ _   _ _______| | ___  __| |
+      / _ \   |  _ \| | __| | |_) | | | |_  /_  / |/ _ \/ _` |
+     / ___ \  | |_) | | |_  |  __/| |_| |/ / / /| |  __/ (_| |
+    /_/   \_\ |____/|_|\__| |_|    \__,_/___/___|_|\___|\__,_|
+                                                              \n".colorize(:magenta)
+
+                                                            
+    
+    puts "Join our community of puzzlers through this puzzle swap app! Press ENTER".colorize(:cyan)
+                                                        
+    end
+
     def splash_page
-        puts "Everyday I'm puzzlin'"
+        logo()
         gets
         welcome_user()
     end
@@ -15,12 +37,10 @@ class CLI
         clear()
         @user_input_name = prompt.ask("Hello, puzzle friend! What is your name?")
        # @name = gets.chomp
-        initial_menu_selection()
+        main_menu()
     end
-    def prompt
-        prompt = TTY::Prompt.new()
-    end
-    def initial_menu_selection
+    def main_menu
+        clear()
         prompt()
         menu_items = ["See a list of available puzzles", "See puzzles in your possession"]
         selection = prompt.select("What would you like to do?", menu_items)
@@ -38,11 +58,10 @@ class CLI
         @selected_puzzle_title = prompt.select("The following puzzles are available. Would you like to select any of the puzzles below?", Puzzle.where(in_progress: false).pluck("title"))
         else
             puts "No available puzzles at the moment! Check back soon"
-            gets 
-            clear()
-            initial_menu_selection()
+            return_to_menu()
         end
         borrow_puzzle()
+        available_puzzles()
     end
 
     def puzzles_in_possession
@@ -51,17 +70,16 @@ class CLI
         #find User whose :name is == to @user_input_name
         user_puzzles = User.where(name: @user_input_name)
         puzzles_id = user_puzzles.pluck("puzzle_id")
-       # User.name = @user_input_name and in_progress == true
-    #   puzzles_to_mark_complete = Puzzle.where(id: puzzles_id).pluck("title")
-        puzzles_to_mark_complete = Puzzle.where(id: puzzles_id, in_progress: true).pluck("title")
         tp Puzzle.where(id: puzzles_id), :title, :in_progress
-        if puzzles_to_mark_complete.length > 0
-        @marked_as_complete = prompt.select("Want to mark any of these puzzles complete? It will make the puzzle avilable for others to borrow", puzzles_to_mark_complete) 
+       
+       
+        puzzles_in_progress = Puzzle.where(id: puzzles_id, in_progress: true).pluck("title") 
+        if puzzles_in_progress.length > 0
+        @mark_as_complete_selection = prompt.select("Want to mark any of these puzzles complete? It will make the puzzle avilable for others to borrow", puzzles_in_progress) 
         else
             puts "No puzzles in progress"
         end
         completed_puzzle()
-        binding.pry
     end
 
     def borrow_puzzle
@@ -78,4 +96,13 @@ class CLI
     def completed_puzzle
         Puzzle.where(title: @marked_as_complete).update(in_progress: false)
     end
+
+    def return_to_menu
+        go_back = prompt.select("Return to main menu", ["click here"])
+        if go_back == 'click here'
+            clear()
+            main_menu()
+        end
+    end
+
 end
