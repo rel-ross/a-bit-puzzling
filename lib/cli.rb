@@ -56,14 +56,25 @@ class CLI
         prompt()
         if Puzzle.where(in_progress: false).length > 0
         @selected_puzzle_title = prompt.select("The following puzzles are available. Would you like to select any of the puzzles below?", Puzzle.where(in_progress: false).pluck("title"))
+        borrow_puzzle()
         else
             puts "No available puzzles at the moment! Check back soon"
             return_to_menu()
         end
-        borrow_puzzle()
         available_puzzles()
         #This isn't working
         return_to_menu()
+    end
+
+    def borrow_puzzle
+        #THIS IS STILL BUGGY BECAUSE THE APP NEEDS TO DESTROY THE OLD USER THAT HAD THE PUZZLE
+    #when puzzle is selected, in progress becomes true, and puzzle 'goes' to possession of person
+       selected_puzzle = Puzzle.where(title: @selected_puzzle_title) 
+       Puzzle.where(title: @selected_puzzle_title).update(in_progress: true)
+       existing_puzzle_id = selected_puzzle.pluck("id")
+       old_puzzle_users = User.where(puzzle_id: existing_puzzle_id) 
+       old_puzzle_users.destroy_all
+       new_puzzle_assignment = User.create(name:@user_input_name, puzzle_id:selected_puzzle.pluck("id")[0])
     end
 
     def puzzles_in_possession
@@ -86,16 +97,7 @@ class CLI
         Puzzle.where(title: @mark_as_complete_selection).update(in_progress: false)
     end
 
-    def borrow_puzzle
-        #THIS IS STILL BUGGY BECAUSE THE APP NEEDS TO DESTROY THE OLD USER THAT HAD THE PUZZLE
-    #when puzzle is selected, in progress becomes true, and puzzle 'goes' to possession of person
-       selected_puzzle = Puzzle.where(title: @selected_puzzle_title) 
-       Puzzle.where(title: @selected_puzzle_title).update(in_progress: true)
-       existing_puzzle_id = selected_puzzle.pluck("id")
-       old_puzzle_users = User.where(puzzle_id: existing_puzzle_id) 
-       old_puzzle_users.destroy_all
-       User.create(name:@user_input_name, puzzle_id:selected_puzzle.object_id)
-    end
+  
 
     def return_to_menu
         go_back = prompt.select("Return to main menu", ["click here"])
