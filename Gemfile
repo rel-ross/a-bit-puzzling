@@ -15,3 +15,4 @@ gem "tty-prompt"
 gem "table_print"
 gem 'colorize'
 gem "tty-box"
+gem 'ruby-progressbar'

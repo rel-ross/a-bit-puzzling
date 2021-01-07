@@ -20,7 +20,8 @@ class CLI
       / _ \   |  _ \| | __| | |_) | | | |_  /_  / |/ _ \/ _` |
      / ___ \  | |_) | | |_  |  __/| |_| |/ / / /| |  __/ (_| |
     /_/   \_\ |____/|_|\__| |_|    \__,_/___/___|_|\___|\__,_|
-                                                              \n".colorize(:magenta)
+                                                              
+    \n".colorize(:magenta)
 
                                                             
     
@@ -37,8 +38,25 @@ class CLI
         clear()
         @user_input_name = prompt.ask("Hello, puzzle friend! What is your name?")
        # @name = gets.chomp
-        main_menu()
+        validate_user()
     end
+
+    def validate_user
+        user_validation = User.all.find do |user|
+            user.name == @user_input_name
+        end
+        if user_validation == nil
+            puts "i don't believe we've met, let's get you all set up."
+           newest_user = User.create(name: @user_input_name)
+           puts ""
+           puts "Woohoo, you're in!"
+           return_to_menu()
+        end
+        if user_validation != nil
+        main_menu()
+        end
+    end
+
     def main_menu
         clear()
         prompt()
@@ -85,8 +103,8 @@ class CLI
         puts ""
         if puzzles_in_progress.length > 0
         @mark_as_complete_selection = prompt.select("Want to mark any of these puzzles complete? It will make the puzzle avilable for others to borrow", puzzles_in_progress) 
-        completed_puzzle()    
-        puzzles_in_possession()
+        completed_puzzle()  
+        puzzles_in_possession()  
         else
             puts "No puzzles in progress"
         end
