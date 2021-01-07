@@ -16,3 +16,4 @@ gem "table_print"
 gem 'colorize'
 gem "tty-box"
 gem 'ruby-progressbar'
+gem 'tty-font'

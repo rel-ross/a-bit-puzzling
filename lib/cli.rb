@@ -14,14 +14,8 @@ class CLI
     end
 
     def logo
-        puts "
-        _      ____  _ _     ____                _          _ 
-       / \    | __ )(_) |_  |  _ \ _   _ _______| | ___  __| |
-      / _ \   |  _ \| | __| | |_) | | | |_  /_  / |/ _ \/ _` |
-     / ___ \  | |_) | | |_  |  __/| |_| |/ / / /| |  __/ (_| |
-    /_/   \_\ |____/|_|\__| |_|    \__,_/___/___|_|\___|\__,_|
-                                                              
-    \n".colorize(:magenta)
+        font = TTY::Font.new(:doom)
+        puts font.write("A Bit Puzzled").colorize(:magenta)
 
                                                             
     
@@ -60,10 +54,12 @@ class CLI
     def main_menu
         clear()
         prompt()
-        menu_items = ["See a list of available puzzles", "See puzzles in your possession"]
+        menu_items = ["See a list of available puzzles", "Add a puzzle to the swap", "See puzzles in your possession"]
         selection = prompt.select("What would you like to do?", menu_items)
             if selection == "See a list of available puzzles" 
                 available_puzzles()
+            elsif selection == "Add a puzzle to the swap"
+                add_puzzle() 
             elsif selection == "See puzzles in your possession"
                 puzzles_in_possession()
             end
@@ -82,8 +78,6 @@ class CLI
     end
 
     def borrow_puzzle
-        #THIS IS STILL BUGGY BECAUSE THE APP NEEDS TO DESTROY THE OLD USER THAT HAD THE PUZZLE
-    #when puzzle is selected, in progress becomes true, and puzzle 'goes' to possession of person
        selected_puzzle = Puzzle.where(title: @selected_puzzle_title) 
        Puzzle.where(title: @selected_puzzle_title).update(in_progress: true)
        existing_puzzle_id = selected_puzzle.pluck("id")
@@ -108,6 +102,14 @@ class CLI
         else
             puts "No puzzles in progress"
         end
+        return_to_menu()
+    end
+
+    def add_puzzle
+        input_title = prompt.ask("Puzzle title?")
+        input_design = prompt.ask("Give a description of the puzzle")
+        input_number_of_pieces = prompt.ask("Pieces?")
+        newest_puzzle = Puzzle.create(title: input_title, design: input_design, number_of_pieces: input_number_of_pieces, in_progress: false)
         return_to_menu()
     end
 
