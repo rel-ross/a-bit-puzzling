@@ -32,25 +32,50 @@ class CLI
     end
     
     def available_puzzles
-        puts "The following puzzles are available:"
+       clear()
         prompt()
-        @selected_puzzle_title = prompt.select("Would you like to select any of the puzzles below?", Puzzle.where(in_progress: false).pluck("title"))
+        if Puzzle.where(in_progress: false).length > 0
+        @selected_puzzle_title = prompt.select("The following puzzles are available. Would you like to select any of the puzzles below?", Puzzle.where(in_progress: false).pluck("title"))
+        else
+            puts "No available puzzles at the moment! Check back soon"
+            gets 
+            clear()
+            initial_menu_selection()
+        end
         borrow_puzzle()
-        binding.pry
     end
 
     def puzzles_in_possession
         clear()
-        puts "These are the puzzles in your possession. If not in progress, the puzzle is available for others to borrow"
+        puts "These are the puzzles in your possession."
         #find User whose :name is == to @user_input_name
-       puzzles = User.where(name: @user_input_name).pluck("puzzle_id")
-        tp Puzzle.where(id: puzzles), :title, :in_progress
+        user_puzzles = User.where(name: @user_input_name)
+        puzzles_id = user_puzzles.pluck("puzzle_id")
+       # User.name = @user_input_name and in_progress == true
+    #   puzzles_to_mark_complete = Puzzle.where(id: puzzles_id).pluck("title")
+        puzzles_to_mark_complete = Puzzle.where(id: puzzles_id, in_progress: true).pluck("title")
+        tp Puzzle.where(id: puzzles_id), :title, :in_progress
+        if puzzles_to_mark_complete.length > 0
+        @marked_as_complete = prompt.select("Want to mark any of these puzzles complete? It will make the puzzle avilable for others to borrow", puzzles_to_mark_complete) 
+        else
+            puts "No puzzles in progress"
+        end
+        completed_puzzle()
+        binding.pry
     end
 
     def borrow_puzzle
-        #when puzzle is selected, in progress becomes true, and puzzle 'goes' to possession of person
+        #THIS IS STILL BUGGY BECAUSE THE APP NEEDS TO DESTROY THE OLD USER THAT HAD THE PUZZLE
+    #when puzzle is selected, in progress becomes true, and puzzle 'goes' to possession of person
        selected_puzzle = Puzzle.where(title: @selected_puzzle_title) 
-       # selected_puzzle.in_progress = true
-        #User.create(name:@user_input_name, puzzle_id:@selected_puzzle.object_id)
+       Puzzle.where(title: @selected_puzzle_title).update(in_progress: true)
+       existing_puzzle_id = selected_puzzle.pluck("id")
+       old_puzzle_users = User.where(puzzle_id: existing_puzzle_id) 
+       old_puzzle_users.destroy_all
+       User.create(name:@user_input_name, puzzle_id:selected_puzzle.object_id)
+    end
+
+    def completed_puzzle
+        Puzzle.where(title: @marked_as_complete).update(in_progress: false)
     end
 end
