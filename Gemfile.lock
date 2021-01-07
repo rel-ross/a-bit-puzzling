@@ -88,6 +88,7 @@ DEPENDENCIES
   tty-box
   tty-font
   tty-prompt
+  tty-reader
 
 BUNDLED WITH
    2.2.0

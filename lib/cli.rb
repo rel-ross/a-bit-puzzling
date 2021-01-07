@@ -16,9 +16,6 @@ class CLI
     def logo
         font = TTY::Font.new(:doom)
         puts font.write("A Bit Puzzled").colorize(:magenta)
-
-                                                            
-    
     puts "Join our community of puzzlers through this puzzle swap app! Press ENTER".colorize(:cyan)
                                                         
     end
@@ -40,7 +37,7 @@ class CLI
             user.name == @user_input_name
         end
         if user_validation == nil
-            puts "i don't believe we've met, let's get you all set up."
+           puts "I don't believe we've met, let's get you all set up."
            newest_user = User.create(name: @user_input_name)
            puts ""
            puts "Woohoo, you're in!"
@@ -73,12 +70,13 @@ class CLI
         borrow_puzzle()
         else
             puts "No available puzzles at the moment! Check back soon"
+            return_to_menu()
         end
         available_puzzles()
     end
 
     def borrow_puzzle
-       selected_puzzle = Puzzle.where(title: @selected_puzzle_title) 
+        selected_puzzle = Puzzle.where(title: @selected_puzzle_title) 
        Puzzle.where(title: @selected_puzzle_title).update(in_progress: true)
        existing_puzzle_id = selected_puzzle.pluck("id")
        old_puzzle_users = User.where(puzzle_id: existing_puzzle_id) 
@@ -109,7 +107,7 @@ class CLI
         input_title = prompt.ask("Puzzle title?")
         input_design = prompt.ask("Give a description of the puzzle")
         input_number_of_pieces = prompt.ask("Pieces?")
-        newest_puzzle = Puzzle.create(title: input_title, design: input_design, number_of_pieces: input_number_of_pieces, in_progress: false)
+        Puzzle.create(title: input_title, design: input_design, number_of_pieces: input_number_of_pieces, in_progress: false)
         return_to_menu()
     end
 
@@ -120,18 +118,10 @@ class CLI
   
 
     def return_to_menu
-       #   WOULD LIKE TO SET IT SO BACKSPACE TAKES YOU BACK TO MAIN MENU
-        # prompt.on(:keypress) do |event|
-        #        prompt.trigger(:keyleft)
-       #         binding.pry
-       # end
-       # go_back = prompt.keypress("Click ← to go back to main menu", keys: [:keyleft])
-        puts " "
-        go_back = prompt.select("Return to main menu", ["click here"])
-        if go_back == 'click here'
-            clear()
-            main_menu()
-        end
+       if prompt.keypress("Press space to got to main menu", keys: [:space])
+        clear()
+             main_menu()
+       end
     end
 
 end
