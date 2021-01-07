@@ -52,18 +52,15 @@ class CLI
     end
     
     def available_puzzles
-       clear()
+        clear()
         prompt()
         if Puzzle.where(in_progress: false).length > 0
         @selected_puzzle_title = prompt.select("The following puzzles are available. Would you like to select any of the puzzles below?", Puzzle.where(in_progress: false).pluck("title"))
         borrow_puzzle()
         else
             puts "No available puzzles at the moment! Check back soon"
-            return_to_menu()
         end
         available_puzzles()
-        #This isn't working
-        return_to_menu()
     end
 
     def borrow_puzzle
@@ -82,11 +79,14 @@ class CLI
         puts "These are the puzzles in your possession."
         user_puzzles = User.where(name: @user_input_name)
         puzzles_id = user_puzzles.pluck("puzzle_id")
+        puts ""
         tp Puzzle.where(id: puzzles_id), :title, :in_progress
         puzzles_in_progress = Puzzle.where(id: puzzles_id, in_progress: true).pluck("title") 
+        puts ""
         if puzzles_in_progress.length > 0
         @mark_as_complete_selection = prompt.select("Want to mark any of these puzzles complete? It will make the puzzle avilable for others to borrow", puzzles_in_progress) 
         completed_puzzle()    
+        puzzles_in_possession()
         else
             puts "No puzzles in progress"
         end
@@ -100,6 +100,13 @@ class CLI
   
 
     def return_to_menu
+       #   WOULD LIKE TO SET IT SO BACKSPACE TAKES YOU BACK TO MAIN MENU
+        # prompt.on(:keypress) do |event|
+        #        prompt.trigger(:keyleft)
+       #         binding.pry
+       # end
+       # go_back = prompt.keypress("Click ← to go back to main menu", keys: [:keyleft])
+        puts " "
         go_back = prompt.select("Return to main menu", ["click here"])
         if go_back == 'click here'
             clear()
