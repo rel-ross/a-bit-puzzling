@@ -17,3 +17,4 @@ gem 'colorize'
 gem "tty-box"
 gem 'ruby-progressbar'
 gem 'tty-font'
+gem "tty-reader"
