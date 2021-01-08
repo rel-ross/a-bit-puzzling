@@ -16,20 +16,21 @@ A Bit Puzzling is an app that allows people to join a puzzle exchange, add their
 
 # Intro Video
 https://www.youtube.com/watch?v=XMALqW6Ekfw&feature=youtu.be
-<p><iframe width="560" height="315" src="https://www.youtube.com/embed/XMALqW6Ekfw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+
 
 
 # Technologies
-Ruby - version 2.6.1
-ActiveRecord - version 5.2
-Sinatra - version 2.0
-Sinatra-activerecord - version 2.0
-SQLite3 - version 1.4
+Ruby - version 2.6.1<br>
+ActiveRecord - version 5.2<br>
+Sinatra - version 2.0<br>
+Sinatra-activerecord - version 2.0<br>
+SQLite3 - version 1.4<br>
 
 # Setup
-To run this project, install it locally by cloning the GitHub repository. To run the file, type:
-
-ruby runner.rb
+To run this project, <ol>
+  <li>install it locally by cloning the GitHub repository. </li>
+  <li>To run the file, type: <em>ruby runner.rb </em></li>
+  </ol>
 
 # Features
 Deftly and expediently finds available puzzles.  
