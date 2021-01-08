@@ -40,7 +40,8 @@ class CLI
            puts "I don't believe we've met, let's get you all set up."
            newest_user = User.create(name: @user_input_name)
            puts ""
-           puts "Woohoo, you're in!"
+           spinner()
+           puts ""
            return_to_menu()
         end
         if user_validation != nil
@@ -48,11 +49,18 @@ class CLI
         end
     end
 
+    def spinner
+        spinner = TTY::Spinner.new("[:spinner] Adding you to the puzzle exchange...", format: :flip)
+        spinner.auto_spin
+        sleep(3) 
+        spinner.stop("Woohoo, you're in!") 
+    end
+
     def main_menu
         clear()
         prompt()
         menu_items = ["See a list of available puzzles", "Add a puzzle to the swap", "See puzzles in your possession"]
-        selection = prompt.select("What would you like to do?", menu_items)
+        selection = prompt.select("So, #{@user_input_name.colorize(:magenta)}, what would you like to do?", menu_items)
             if selection == "See a list of available puzzles" 
                 available_puzzles()
             elsif selection == "Add a puzzle to the swap"
