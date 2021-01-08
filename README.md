@@ -1,14 +1,16 @@
 # A Bit Puzzling
 A puzzle exchange with friends
 
-# Table of Contents<br>
-Intro Video<br>
-Technologies<br>
-Setup<br>
-Features<br>
-Unfinished Features<br>
-Contact<br>
-License<br>
+# Table of Contents
+<ul>
+<li>Intro Video</li>
+<li>Technologies</li>
+<li>Setup</li>
+<li>Features</li>
+<li>Unfinished Features</li>
+<li>Contact</li>
+<li>License</li>
+</ul>
 
 # General Info
 A Bit Puzzling is an app that allows people to join a puzzle exchange, add their own puzzles to the exchange, and borrow puzzles from others. It's a great way to be part of a community as you social distance.
