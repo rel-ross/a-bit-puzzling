@@ -27,9 +27,9 @@ https://www.youtube.com/watch?v=XMALqW6Ekfw&feature=youtu.be
 </ul>
 
 # Setup
-To run this project, <ol>
-  <li>install it locally by cloning the GitHub repository. </li>
-  <li>To run the file, type: <em>ruby runner.rb </em></li>
+To run this project: <ol>
+  <li>Install file locally by cloning the GitHub repository. </li>
+  <li>To run file, type: <em>ruby runner.rb </em></li>
   </ol>
 
 # Features
@@ -37,7 +37,7 @@ To run this project, <ol>
 <li>Live puzzle availability status</li>
 <li>Adds meaning and satisfaction to life</li>
 <li>Advertisement-free experience</li>
-<li>No-fuss sign-up</li>
+<li>No-fuss sign-up; no data sold to advertisers because <em>we don't have any<em></li>
 </ul>
 
 
