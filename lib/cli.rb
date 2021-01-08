@@ -73,9 +73,14 @@ class CLI
     def available_puzzles
         clear()
         prompt()
+        puzzle_list = Puzzle.where(in_progress: false).pluck("title").push("Return to main menu")
         if Puzzle.where(in_progress: false).length > 0
-        @selected_puzzle_title = prompt.select("The following puzzles are available. Would you like to select any of the puzzles below?", Puzzle.where(in_progress: false).pluck("title"))
-        borrow_puzzle()
+        @selected_puzzle_title = prompt.select("The following puzzles are available. Would you like to select any of the puzzles below?", puzzle_list)
+        if @selected_puzzle_title == "Return to main menu"
+            main_menu()
+            else
+                borrow_puzzle()
+            end
         else
             puts "No available puzzles at the moment! Check back soon"
             return_to_menu()
@@ -84,7 +89,7 @@ class CLI
     end
 
     def borrow_puzzle
-        selected_puzzle = Puzzle.where(title: @selected_puzzle_title) 
+       selected_puzzle = Puzzle.where(title: @selected_puzzle_title) 
        Puzzle.where(title: @selected_puzzle_title).update(in_progress: true)
        existing_puzzle_id = selected_puzzle.pluck("id")
        old_puzzle_users = User.where(puzzle_id: existing_puzzle_id) 
@@ -99,7 +104,7 @@ class CLI
         puzzles_id = user_puzzles.pluck("puzzle_id")
         puts ""
         tp Puzzle.where(id: puzzles_id), :title, :in_progress
-        puzzles_in_progress = Puzzle.where(id: puzzles_id, in_progress: true).pluck("title") 
+        puzzles_in_progress = Puzzle.where(id: puzzles_id, in_progress: true).pluck("title")
         puts ""
         if puzzles_in_progress.length > 0
         @mark_as_complete_selection = prompt.select("Want to mark any of these puzzles complete? It will make the puzzle avilable for others to borrow", puzzles_in_progress) 
@@ -126,7 +131,7 @@ class CLI
   
 
     def return_to_menu
-       if prompt.keypress("Press space to got to main menu", keys: [:space])
+       if prompt.select("", ["Return to main menu"])
         clear()
              main_menu()
        end
