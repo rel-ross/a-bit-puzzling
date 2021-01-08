@@ -54,4 +54,5 @@ To run this project: <ol>
 Created by Arielle Ross and Benton Westergaard
 
 # License
-Click to view
+<a href="https://dmv.colorado.gov/faq-driver-license" target="_blank">Click to view</a>
+
