@@ -17,6 +17,7 @@ A Bit Puzzling is an app that allows people to join a puzzle exchange, add their
 
 # Intro Video
 https://www.youtube.com/watch?v=XMALqW6Ekfw&feature=youtu.be
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XMALqW6Ekfw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 # Technologies
