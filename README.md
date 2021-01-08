@@ -37,10 +37,11 @@ To run this project: <ol>
 
 # Features
 <ul>
-<li>Live puzzle availability status</li>
-<li>Adds meaning and satisfaction to life</li>
-<li>Advertisement-free experience</li>
-<li>No-fuss sign-up; no data sold to advertisers because <em>we don't have any</em></li>
+  <li>Live puzzle availability status</li>
+  <li>Adds meaning and satisfaction to life</li>
+  <li>Advertisement-free experience</li>
+  <li>No-fuss sign-up; no data sold to advertisers because <em>we don't have any</em></li>
+  <li>High in fiber</li>
 </ul>
 
 
