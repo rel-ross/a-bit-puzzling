@@ -3,7 +3,7 @@
 # A Bit Puzzling
 A puzzle exchange with friends
 
-# Table of contents<br>
+# Table of Contents<br>
 Intro Video<br>
 Technologies<br>
 Setup<br>
