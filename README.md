@@ -31,14 +31,21 @@ To run this project, install it locally by cloning the GitHub repository. To run
 ruby runner.rb
 
 # Features
-MUST DO THIS
+Deftly and expediently finds available puzzles.  
+Adds meaning and satisfaction to life.
+Advertisement-free experience.
+No-fuss sign-up.
+Test1234
+
+
+
 
 # Unfinished Features :
 
 - Add option for a "return to main menu" on each page
 
 # Contact
-Created by Arielle Ross and Benton Westergard
+Created by Arielle Ross and Benton Westergaard
 
 License
 Click to view
