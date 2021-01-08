@@ -1,5 +1,3 @@
-# Mod 1 ActiveRecord Starter Repo
-
 # A Bit Puzzling
 A puzzle exchange with friends
 
