@@ -51,7 +51,9 @@ To run this project: <ol>
  </ul>
 
 # Contact
-Created by Arielle Ross and Benton Westergaard
+Created by <br>
+<a href="https://www.linkedin.com/in/arielleross/" target="_blank">Arielle Ross</a><br>
+<a href="https://www.linkedin.com/in/benton-westergaard/" target="_blank">Benton Westergaard</a>
 
 # License
 <a href="https://dmv.colorado.gov/faq-driver-license" target="_blank">Click to view</a>
