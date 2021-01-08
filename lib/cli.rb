@@ -15,7 +15,7 @@ class CLI
 
     def logo
         font = TTY::Font.new(:doom)
-        puts font.write("A Bit Puzzled").colorize(:magenta)
+        puts font.write("A Bit Puzzling").colorize(:magenta)
     puts "Join our community of puzzlers through this puzzle swap app! Press ENTER".colorize(:cyan)
                                                         
     end
