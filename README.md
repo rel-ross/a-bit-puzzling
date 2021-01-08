@@ -43,7 +43,7 @@ To run this project, <ol>
 
 # Unfinished Features
  <ul>
-  <li>Drone puzzle delivery/pick-u</li>
+  <li>Drone puzzle delivery/pick-up</li>
   <li>Add option for a "return to main menu" on each page</li>
  </ul>
 
