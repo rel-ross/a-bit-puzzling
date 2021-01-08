@@ -3,13 +3,14 @@ A puzzle exchange with friends
 
 # Table of Contents
 <ul>
-<li>Intro Video</li>
-<li>Technologies</li>
-<li>Setup</li>
-<li>Features</li>
-<li>Unfinished Features</li>
-<li>Contact</li>
-<li>License</li>
+  <li>General Info</li>
+  <li>Intro Video</li>
+  <li>Technologies</li>
+  <li>Setup</li>
+  <li>Features</li>
+  <li>Unfinished Features</li>
+  <li>Contact</li>
+  <li>License</li>
 </ul>
 
 # General Info
