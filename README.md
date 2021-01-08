@@ -11,7 +11,8 @@ Features<br>
 Unfinished Features<br>
 Contact<br>
 License<br>
-General info
+
+# General Info
 A Bit Puzzling is an app that allows people to join a puzzle exchange, add their own puzzles to the exchange, and borrow puzzles from others. It's a great way to be part of a community as you social distance.
 
 # Intro Video
@@ -33,16 +34,17 @@ To run this project, <ol>
   </ol>
 
 # Features
-Deftly and expediently finds available puzzles.  
-Adds meaning and satisfaction to life.
-Advertisement-free experience.
-No-fuss sign-up.
+Live puzzle availability status<br>
+Adds meaning and satisfaction to life<br>
+Advertisement-free experience<br>
+No-fuss sign-up<br>
 Test1234
 
 
 
 
 # Unfinished Features :
+Drone puzzle delivery/pick-u
 
 - Add option for a "return to main menu" on each page
 
