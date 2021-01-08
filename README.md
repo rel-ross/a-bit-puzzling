@@ -34,18 +34,18 @@ To run this project, <ol>
   </ol>
 
 # Features
-Live puzzle availability status<br>
-Adds meaning and satisfaction to life<br>
-Advertisement-free experience<br>
-No-fuss sign-up<br>
-Test1234
+<ul>
+<li>Live puzzle availability status</li>
+<li>Adds meaning and satisfaction to life</li>
+<li>Advertisement-free experience</li>
+<li>No-fuss sign-up</li>
+</ul>
 
 
 
 
 # Unfinished Features :
-Drone puzzle delivery/pick-u
-
+- Drone puzzle delivery/pick-u
 - Add option for a "return to main menu" on each page
 
 # Contact
