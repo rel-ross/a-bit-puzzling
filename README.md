@@ -19,13 +19,14 @@ A Bit Puzzling is an app that allows people to join a puzzle exchange, add their
 https://www.youtube.com/watch?v=XMALqW6Ekfw&feature=youtu.be
 
 
-
 # Technologies
-Ruby - version 2.6.1<br>
-ActiveRecord - version 5.2<br>
-Sinatra - version 2.0<br>
-Sinatra-activerecord - version 2.0<br>
-SQLite3 - version 1.4<br>
+<ul>
+<li>Ruby - version 2.6.1</li>
+<li>ActiveRecord - version 5.2</li>
+<li>Sinatra - version 2.0</li>
+<li>Sinatra-activerecord - version 2.0</li>
+<li>SQLite3 - version 1.4</li>
+</ul>
 
 # Setup
 To run this project, <ol>
@@ -42,14 +43,14 @@ To run this project, <ol>
 </ul>
 
 
-
-
 # Unfinished Features :
-- Drone puzzle delivery/pick-u
-- Add option for a "return to main menu" on each page
+ <ul>
+  <li>Drone puzzle delivery/pick-u</li>
+  <li>Add option for a "return to main menu" on each page</li>
+ </ul>
 
 # Contact
 Created by Arielle Ross and Benton Westergaard
 
-License
+# License
 Click to view
