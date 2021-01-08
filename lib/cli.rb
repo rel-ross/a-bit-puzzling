@@ -126,7 +126,7 @@ class CLI
   
 
     def return_to_menu
-       if prompt.keypress("Press space to got to main menu", keys: [:space])
+       if prompt.keypress("Press space to go to main menu", keys: [:space])
         clear()
              main_menu()
        end
