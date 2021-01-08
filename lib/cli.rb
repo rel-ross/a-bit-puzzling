@@ -132,7 +132,7 @@ class CLI
 
     def return_to_menu
        if prompt.select("", ["Return to main menu"])
-        clear()
+            clear()
              main_menu()
        end
     end
